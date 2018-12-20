@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a href="/article/create">写文章</a>
+{{range  $index, $article := .Articles}}
+    <p>
+    <a href="/article/{{$article.Id}}"><h5>{{$article.Title}}</h5></a>
+    <span style="font-size:8px;color: red;">发布时间{{$article.CreateTime}}</span>
+    <br/>
+    {{$article.Content}}
+    </p>
+{{end}}
+<h6>共{{.Total}}篇文章 第{{.PageNumber}}页 共{{.AllPage}}页</h6>
+</body>
+</html>

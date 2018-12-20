@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>
+<h5>{{.Article.Title}}</h5>
+<span style="font-size:8px;color: red;">发布时间{{.Article.CreateTime}} 作者：{{.Article.User.Name}}</span>
+<br/>
+{{.Article.Content}}
+</p>
+评论：
+
+    {{range $index, $comment := .Article.Comment}}
+    <p>
+    <span style="font-size:8px;color: red;">{{$comment.User.Name}} 发布于 {{$comment.CreateTime}}</span>
+        <br/>&nbsp;&nbsp;&nbsp;&nbsp;{{$comment.Content}}
+    </p>
+    {{end}}
+<form action="/article/{{.Article.Id}}/comment" method="post">
+    <textarea name="content"></textarea>
+    <input type="submit" value="提交" size="15">
+</form>
+</body>
+</html>
